@@ -10,4 +10,9 @@ class Grupo extends Model
         'nome',
         'descricao',
     ];
+
+    public function pessoas()
+    {
+        return $this->hashMany(Pessoa::class);
+    }
 }
