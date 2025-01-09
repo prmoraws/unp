@@ -14,22 +14,98 @@
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
                         <div class="mb-4">
+                            <div class="relative">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">BLOCO</label>
+                                <select wire:model="bloco_id"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    @foreach (\App\Models\Bloco::all() as $bloco)
+                                        <option value="{{ $bloco->id }}">{{ $bloco->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="relative">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">REGIÃO</label>
+                                <select wire:model="regiao_id"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    @foreach (\App\Models\Regiao::all() as $regiao)
+                                        <option value="{{ $regiao->id }}">{{ $regiao->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="relative">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Categoria</label>
+                                <select wire:model="categoria_id"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    @foreach (\App\Models\Categoria::all() as $categoria)
+                                        <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="relative">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Cargo</label>
+                                <select wire:model="cargo_id"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    @foreach (\App\Models\Cargo::all() as $cargo)
+                                        <option value="{{ $cargo->id }}">{{ $cargo->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="relative">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Grupo</label>
+                                <select wire:model="grupo_id"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    @foreach (\App\Models\Grupo::all() as $grupo)
+                                        <option value="{{ $grupo->id }}">{{ $grupo->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="relative">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">IGREJA</label>
+                                <select wire:model="igreja_id"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    @foreach (\App\Models\Igreja::all() as $igreja)
+                                        <option value="{{ $igreja->id }}">{{ $igreja->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-4">
                             <label for="exampleFormControlInput1"
-                                class="block text-gray-700 text-sm font-bold mb-2">Bloco:</label>
+                                class="block text-gray-700 text-sm font-bold mb-2">Nome:</label>
                             <input type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="exampleFormControlInput1" placeholder="Entre com o bloco" wire:model="bloco_id">
-                            @error('bloco_id')
+                                id="exampleFormControlInput1" placeholder="Entre com a nome" wire:model="nome">
+                            @error('nome')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
                         <div class="mb-4">
-                            <label for="exampleFormControlInput2"
-                                class="block text-gray-700 text-sm font-bold mb-2">Região:</label>
-                            <textarea
+                            <label for="exampleFormControlInput1"
+                                class="block text-gray-700 text-sm font-bold mb-2">Celular:</label>
+                            <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="exampleFormControlInput2" wire:model="regiao_id" placeholder="Entre com a Região"></textarea>
-                            @error('regiao_id')
+                                id="exampleFormControlInput1" placeholder="Entre com o celuar" wire:model="celular">
+                            @error('celular')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="exampleFormControlInput1"
+                                class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                            <input type="text"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="exampleFormControlInput1" placeholder="Entre com email" wire:model="email">
+                            @error('email')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                         </div>

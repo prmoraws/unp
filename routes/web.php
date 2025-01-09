@@ -10,7 +10,7 @@ Route::get('categorias', Categorias::class)->middleware('auth');
 Route::get('igrejas', Igrejas::class)->middleware('auth');
 Route::get('regioes', Regioes::class)->middleware('auth');
 Route::get('blocos', Blocos::class)->middleware('auth');
-Route::get('pessoas', Pessoas::class)->middleware('auth');
+Route::get('pessoas', Pessoas::class)->name('pessoas')->middleware('auth');
 
 
 Route::get('/', function () {
