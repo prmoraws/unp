@@ -17,3 +17,8 @@ php artisan make:livewire cargos
 php artisan make:livewire grupos
 ```
 
+Habilitar Storage Link
+```sh
+php artisan storage:link
+```
+
