@@ -34,6 +34,8 @@
                     <tr class="bg-gray-100">
                         <th class="px-4 py-2 w-20">No.</th>
                         <th class="px-4 py-2">Igreja</th>
+                        <th class="px-4 py-2">Bloco</th>
+                        <th class="px-4 py-2">Região</th>
                         <th class="px-4 py-2">Ação</th>
                     </tr>
                 </thead>
@@ -42,6 +44,12 @@
                         <tr>
                             <td class="border px-4 py-2">{{ $igreja->id }}</td>
                             <td class="border px-4 py-2">{{ $igreja->nome }}</td>
+                            @php
+                                $bloco = \App\Models\Bloco::findOrFail($igreja->bloco_id);
+                                $regiao = \App\Models\Regiao::findOrFail($igreja->regiao_id);
+                            @endphp
+                            <td class="border px-4 py-2">{{ $bloco->nome }}</td>
+                            <td class="border px-4 py-2">{{ $regiao->nome }}</td>
                             <td class="border px-4 py-2">
                                 <button wire:click="edit({{ $igreja->id }})"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>
@@ -55,4 +63,3 @@
         </div>
     </div>
 </div>
-

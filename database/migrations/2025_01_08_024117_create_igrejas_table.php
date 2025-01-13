@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('igrejas', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->foreignIdFor(\App\Models\Bloco::class);
+            $table->foreignIdFor(\App\Models\Regiao::class);
             $table->timestamps();
         });
     }

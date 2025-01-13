@@ -15,4 +15,14 @@ class Bloco extends Model
     {
         return $this->hashMany(Pessoa::class);
     }
+
+    public function regiaos()
+    {
+        return $this->hashMany(Regiao::class);
+    }
+
+    public function igrejas()
+    {
+        return $this->hashMany(Igreja::class);
+    }
 }

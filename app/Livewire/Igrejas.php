@@ -7,7 +7,7 @@ use App\Models\Igreja;
 
 class Igrejas extends Component
 {
-    public $igrejas, $nome, $igreja_id;
+    public $igrejas, $nome, $igreja_id, $regiao_id, $bloco_id;
     public $isOpen = 0;
 
     /**
@@ -75,12 +75,14 @@ class Igrejas extends Component
         ]);
 
         Igreja::updateOrCreate(['id' => $this->igreja_id], [
-            'nome' => $this->nome
+            'nome' => $this->nome,
+            'bloco_id' => $this->bloco_id,
+            'regiao_id' => $this->regiao_id
         ]);
 
         session()->flash(
             'message',
-            $this->igreja_id ? 'igreja atualizado com sucesso.' : 'igreja criado com sucesso.'
+            $this->igreja_id ? 'Igreja atualizada com sucesso.' : 'Igreja criada com sucesso.'
         );
 
         $this->closeModal();
@@ -97,6 +99,8 @@ class Igrejas extends Component
         $igreja = Igreja::findOrFail($id);
         $this->igreja_id = $id;
         $this->nome = $igreja->nome;
+        $this->bloco_id = $igreja->bloco_id;
+        $this->regiao_id = $igreja->regiao_id;
 
         $this->openModal();
     }
@@ -109,6 +113,6 @@ class Igrejas extends Component
     public function delete($id)
     {
         Igreja::find($id)->delete();
-        session()->flash('message', 'igreja deletado com sucesso.');
+        session()->flash('message', 'Igreja deletada com sucesso.');
     }
 }

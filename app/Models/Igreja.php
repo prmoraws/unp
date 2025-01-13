@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Igreja extends Model
 {
     protected $fillable = [
-        'nome'
+        'nome',
+        'bloco_id',
+        'regiao_id'
     ];
 
     public function pessoas()

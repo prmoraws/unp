@@ -7,11 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 class Regiao extends Model
 {
     protected $fillable = [
-        'nome'
+        'nome',
+        'bloco_id'
     ];
 
     public function pessoas()
     {
         return $this->hashMany(Pessoa::class);
+    }
+
+    public function igrejas()
+    {
+        return $this->hashMany(Igreja::class);
     }
 }

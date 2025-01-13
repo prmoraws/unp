@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Regioes extends Component
 {
-    public $regioes, $nome, $regiao_id;
+    public $regioes, $nome, $regiao_id, $bloco_id;
     public $isOpen = 0;
 
     /**
@@ -73,14 +73,16 @@ class Regioes extends Component
         $this->validate([
             'nome' => 'required',
         ]);
-
+        // dd($this->bloco_id);
         Regiao::updateOrCreate(['id' => $this->regiao_id], [
-            'nome' => $this->nome
+
+            'nome' => $this->nome,
+            'bloco_id' => $this->bloco_id
         ]);
 
         session()->flash(
             'message',
-            $this->regiao_id ? 'regiao atualizado com sucesso.' : 'regiao criado com sucesso.'
+            $this->regiao_id ? 'regiao atualizada com sucesso.' : 'Regiao criada com sucesso.'
         );
 
         $this->closeModal();
@@ -97,6 +99,7 @@ class Regioes extends Component
         $regiao = Regiao::findOrFail($id);
         $this->regiao_id = $id;
         $this->nome = $regiao->nome;
+        $this->bloco_id = $regiao->bloco_id;
 
         $this->openModal();
     }
@@ -109,6 +112,6 @@ class Regioes extends Component
     public function delete($id)
     {
         Regiao::find($id)->delete();
-        session()->flash('message', 'regiao deletado com sucesso.');
+        session()->flash('message', 'Regiao deletada com sucesso.');
     }
 }

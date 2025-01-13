@@ -64,5 +64,12 @@ Configure o Framework para utilizar 'pt_BR' como linguagem padrão
 // Para versões 11.x altere a linha 8 do arquivo .env
 APP_LOCALE=pt_BR
 
+Github pull para baixar do git, e push para subir.
+```sh
+git pull origin main
+git push -u origin main
+
+```
+
 Acesse o projeto
 [http://localhost:8000](http://localhost:8000)

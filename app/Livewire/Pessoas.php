@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Pessoas extends Component
 {
-    public $pessoas, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade, $estado, $profissao, $aptidoes, $conversao, $obra, $trabalho, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id;
+    public $pessoas, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade, $estado, $profissao, $aptidoes, $conversao, $obra, $trabalho, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
     public $isOpen = 0;
 
     /**
@@ -105,6 +105,12 @@ class Pessoas extends Component
         ]);
 
         Pessoa::updateOrCreate(['id' => $this->pessoa_id], [
+            'bloco_id' => $this->bloco_id,
+            'regiao_id' => $this->regiao_id,
+            'igreja_id' => $this->igreja_id,
+            'categoria_id' => $this->categoria_id,
+            'cargo_id' => $this->cargo_id,
+            'grupo_id' => $this->grupo_id,
             'nome' => $this->nome,
             'celular' => $this->celular,
             'telefone' => $this->telefone,
@@ -144,6 +150,12 @@ class Pessoas extends Component
     public function edit($id)
     {
         $pessoa = Pessoa::findOrFail($id);
+        $this->bloco_id = $pessoa->bloco_id;
+        $this->regiao_id = $pessoa->regio_id;
+        $this->igreja_id = $pessoa->igreja_id;
+        $this->categoria_id = $pessoa->categoria_id;
+        $this->cargo_id = $pessoa->cargo_id;
+        $this->grupo_id = $pessoa->grupo_id;
         $this->pessoa_id = $id;
         $this->nome = $pessoa->nome;
         $this->celular = $pessoa->celular;
@@ -176,6 +188,6 @@ class Pessoas extends Component
     public function delete($id)
     {
         Pessoa::find($id)->delete();
-        session()->flash('message', 'Pessoa deletado com sucesso.');
+        session()->flash('message', 'Pessoa deletada com sucesso.');
     }
 }

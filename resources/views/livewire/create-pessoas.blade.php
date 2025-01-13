@@ -18,6 +18,7 @@
                                 <label class="block text-gray-700 text-sm font-bold mb-2">BLOCO</label>
                                 <select wire:model="bloco_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="">--selecione--</option>
                                     @foreach (\App\Models\Bloco::all() as $bloco)
                                         <option value="{{ $bloco->id }}">{{ $bloco->nome }}</option>
                                     @endforeach
@@ -29,6 +30,7 @@
                                 <label class="block text-gray-700 text-sm font-bold mb-2">REGIÃO</label>
                                 <select wire:model="regiao_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="">--selecione--</option>
                                     @foreach (\App\Models\Regiao::all() as $regiao)
                                         <option value="{{ $regiao->id }}">{{ $regiao->nome }}</option>
                                     @endforeach
@@ -40,6 +42,7 @@
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Categoria</label>
                                 <select wire:model="categoria_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="">--selecione--</option>
                                     @foreach (\App\Models\Categoria::all() as $categoria)
                                         <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
                                     @endforeach
@@ -51,6 +54,7 @@
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Cargo</label>
                                 <select wire:model="cargo_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="">--selecione--</option>
                                     @foreach (\App\Models\Cargo::all() as $cargo)
                                         <option value="{{ $cargo->id }}">{{ $cargo->nome }}</option>
                                     @endforeach
@@ -62,6 +66,7 @@
                                 <label class="block text-gray-700 text-sm font-bold mb-2">Grupo</label>
                                 <select wire:model="grupo_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="">--selecione--</option>
                                     @foreach (\App\Models\Grupo::all() as $grupo)
                                         <option value="{{ $grupo->id }}">{{ $grupo->nome }}</option>
                                     @endforeach
@@ -73,6 +78,7 @@
                                 <label class="block text-gray-700 text-sm font-bold mb-2">IGREJA</label>
                                 <select wire:model="igreja_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    <option value="">--selecione--</option>
                                     @foreach (\App\Models\Igreja::all() as $igreja)
                                         <option value="{{ $igreja->id }}">{{ $igreja->nome }}</option>
                                     @endforeach
