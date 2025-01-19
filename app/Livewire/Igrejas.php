@@ -3,12 +3,19 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Igreja;
+use App\Models\{Igreja, Regiao};
 
 class Igrejas extends Component
 {
     public $igrejas, $nome, $igreja_id, $regiao_id, $bloco_id;
     public $isOpen = 0;
+    public $regiaos = null;
+
+    public function FiterRegiaoByBlocoId() //Filtro para o select região
+    {
+        $this->regiaos = Regiao::where('bloco_id', $this->bloco_id)
+            ->get();
+    }
 
     /**
      * The attributes that are mass assignable.

@@ -16,4 +16,13 @@ class Igreja extends Model
     {
         return $this->hashMany(Pessoa::class);
     }
+
+    public function regiaos()
+    {
+        return $this->belongsTo(Regiao::class);
+    }
+    public function blocos()
+    {
+        return $this->belongsTo(Bloco::class);
+    }
 }

@@ -2,13 +2,28 @@
 
 namespace App\Livewire;
 
-use App\Models\Pessoa;
+use App\Models\{Pessoa, Regiao, Igreja};
 use Livewire\Component;
 
 class Pessoas extends Component
 {
-    public $pessoas, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade, $estado, $profissao, $aptidoes, $conversao, $obra, $trabalho, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
+    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade, $estado, $profissao, $aptidoes, $conversao, $obra, $trabalho, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
     public $isOpen = 0;
+    public $regiaos = null;
+    public $igrejas = null;
+
+    public function FiterRegiaoByBlocoId() //Filtro para o select região
+    {
+        $this->regiaos = Regiao::where('bloco_id', $this->bloco_id)
+            ->get();
+    }
+
+    public function FiterIgrejaByBlocoId() //Filtro para o select região
+    {
+        $this->igrejas = Igreja::where('regiao_id', $this->regiao_id)
+            ->get();
+    }
+
 
     /**
      * The attributes that are mass assignable.

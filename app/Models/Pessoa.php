@@ -29,8 +29,17 @@ class Pessoa extends Model
 
     ];
 
-    public function pessoas()
+    public function blocos()
     {
-        return $this->hashMany(Pessoa::class);
+        return $this->belongsTo(Bloco::class);
+    }
+    public function regiaos()
+    {
+        return $this->belongsTo(Regiao::class);
+    }
+
+    public function igrejas()
+    {
+        return $this->belongsTo(Igreja::class);
     }
 }

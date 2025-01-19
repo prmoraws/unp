@@ -20,4 +20,9 @@ class Regiao extends Model
     {
         return $this->hashMany(Igreja::class);
     }
+
+    public function blocos()
+    {
+        return $this->belongsTo(Bloco::class);
+    }
 }
