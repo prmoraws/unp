@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Livewire\Trabalhos;
+use App\Models\Cargo;
+use App\Models\Categoria;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,7 +18,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call(BlocoSeeder::class);
         $this->call(EstadoSeeder::class);
         $this->call(CidadeSeeder::class);
+        $this->call(TrabalhoSeeder::class);
+        $this->call(GrupoSeeder::class);
+        $this->call(CargoSeeder::class);
+        $this->call(CategoriaSeeder::class);
     }
 }
