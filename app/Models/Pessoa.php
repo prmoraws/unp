@@ -7,8 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model
 {
     protected $fillable = [
+        'bloco_id',
+        'regiao_id',
+        'igreja_id',
+        'categoria_id',
+        'cargo_id',
+        'grupo_id',
+        'trabalho_id',
         'nome',
-        'celeuar',
+        'celular',
         'telefone',
         'email',
         'endereco',
@@ -20,7 +27,6 @@ class Pessoa extends Model
         'aptidoes',
         'conversao',
         'obra',
-        'trabalho',
         'batismo',
         'esanto',
         'preso',

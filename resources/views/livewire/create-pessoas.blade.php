@@ -13,6 +13,7 @@
             <form>
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class="">
+
                         <div class="mb-4">
                             <div class="relative">
                                 <label class="block text-gray-700 text-sm font-bold mb-2">BLOCO</label>
@@ -101,10 +102,10 @@
                         <div class="mb-4">
                             <!-- Celular -->
                             <div class="col-span-6 sm:col-span-4">
-                                <x-label for="celelular" value="{{ __('Celular') }}" />
-                                <x-input id="celelular" type="text" class="mt-1 block w-full" wire:model="celular"
+                                <x-label for="celular" value="{{ __('Celular') }}" />
+                                <x-input id="celular" type="text" class="mt-1 block w-full" wire:model="celular"
                                     required autocomplete="celular" />
-                                <x-input-error for="celelular" class="mt-2" />
+                                <x-input-error for="celular" class="mt-2" />
                             </div>
                         </div>
                         <div class="mb-4">
@@ -146,9 +147,12 @@
                         <div class="mb-4">
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="cep" value="{{ __('Estado') }}" />
-                                <select wire:model="estado"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"> 
+                                <select wire:model="estado"
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     @foreach (\App\Models\Estado::all() as $estado)
-                                        <option value="{{ $estado->id }}">{{ $estado->nome }}</option>
+                                        @if ($estado->id == 29)
+                                            <option value="{{ $estado->id }}">{{ $estado->nome }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -203,13 +207,13 @@
                         </div>
                         <div class="mb-4">
                             <div class="relative">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Trabalho:</label>
-                                <select wire:model="trabalho"
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Trabalho</label>
+                                <select wire:model="trabalho_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="">--selecione--</option>
-                                    <option value="">--selecione--</option>
-                                    <option value="">--selecione--</option>
-
+                                    @foreach (\App\Models\Trabalho::all() as $trabalho)
+                                        <option value="{{ $trabalho->id }}">{{ $trabalho->nome }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>

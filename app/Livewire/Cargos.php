@@ -71,7 +71,7 @@ class Cargos extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required',
+            'nome' => 'required|string|min:3|max:250',
         ]);
 
         Cargo::updateOrCreate(['id' => $this->cargo_id], [

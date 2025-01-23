@@ -71,7 +71,7 @@ class Regioes extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required',
+            'nome' => 'required|string|min:3|max:250',
         ]);
         // dd($this->bloco_id);
         Regiao::updateOrCreate(['id' => $this->regiao_id], [

@@ -19,6 +19,10 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Categoria::class);
             $table->foreignIdFor(\App\Models\Cargo::class);
             $table->foreignIdFor(\App\Models\Grupo::class);
+            $table->foreignIdFor(\App\Models\Cidade::class);
+            $table->foreignIdFor(\App\Models\Estado::class);
+            $table->foreignIdFor(\App\Models\Trabalho::class);
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->string('nome');
             $table->string('celeuar');
             $table->string('telefone');
@@ -26,13 +30,10 @@ return new class extends Migration
             $table->string('endereco');
             $table->string('bairro');
             $table->string('cep');
-            $table->string('cidade');
-            $table->string('estado');
             $table->string('profissao');
             $table->text('aptidoes');
             $table->date('conversao');     //data de conversão
             $table->date('obra');    //data início na obra
-            $table->string('trabalho'); //interno ou externo
             $table->boolean('batismo')->default(0);;   //bol batizado nas águas
             $table->boolean('esanto')->default(0);;  //bol batizado no Espirito Santo
             $table->boolean('preso')->default(0);;   //bol ja foi preso

@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Pessoas extends Component
 {
-    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade, $estado, $profissao, $aptidoes, $conversao, $obra, $trabalho, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
+    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $trabalho_id, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
     public $isOpen = 0;
     public $regiaos = null;
     public $igrejas = null;
@@ -81,13 +81,13 @@ class Pessoas extends Component
         $this->endereco = '';
         $this->bairro = '';
         $this->cep = '';
-        $this->cidade = '';
-        $this->estado = '';
+        $this->cidade_id = '';
+        $this->estado_id = '';
         $this->profissao = '';
         $this->aptidoes = '';
         $this->conversao = '';
         $this->obra = '';
-        $this->trabalho = '';
+        $this->trabalho_id = '';
         $this->batismo = 0;
         $this->esanto = 0;
         $this->preso = 0;
@@ -104,15 +104,12 @@ class Pessoas extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required',
+            'nome' => 'required|string|min:3|max:250',
             'celular' => 'required',
             'email' => 'email',
             'endereco' => 'required',
             'bairro' => 'required',
-            'cidade' => 'required',
-            'estado' => 'required',
             'profissao' => 'required',
-            'trabalho' => 'required',
             'batismo' => 'required',
             'esanto' => 'required',
             'preso' => 'required',
@@ -133,13 +130,13 @@ class Pessoas extends Component
             'endereco' => $this->endereco,
             'bairro' => $this->bairro,
             'cep' => $this->cep,
-            'cidade' => $this->cidade,
-            'estado' => $this->estado,
+            'cidade_id' => $this->cidade_id,
+            'estado_id' => $this->estado_id,
             'profissao' => $this->profissao,
             'aptidoes' => $this->aptidoes,
             'conversao' => $this->conversao,
             'obra' => $this->obra,
-            'trabalho' => $this->trabalho,
+            'trabalho_id' => $this->trabalho_id,
             'batismo' => $this->batismo,
             'esanto' => $this->esanto,
             'preso' => $this->preso,
@@ -179,13 +176,13 @@ class Pessoas extends Component
         $this->endereco = $pessoa->endereco;
         $this->bairro = $pessoa->bairro;
         $this->cep = $pessoa->cep;
-        $this->cidade = $pessoa->cidade;
-        $this->estado = $pessoa->estado;
+        $this->cidade_id = $pessoa->cidade;
+        $this->estado_id = $pessoa->estado;
         $this->profissao = $pessoa->profissao;
         $this->aptidoes = $pessoa->aptidoes;
         $this->conversao = $pessoa->conversao;
         $this->obra = $pessoa->obra;
-        $this->trabalho = $pessoa->trabalho;
+        $this->trabalho_id = $pessoa->trabalho_id;
         $this->batismo = $pessoa->batismo;
         $this->esanto = $pessoa->esanto;
         $this->preso = $pessoa->preso;

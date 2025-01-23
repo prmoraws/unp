@@ -2,12 +2,12 @@
 
 namespace App\Livewire;
 
-use App\Models\Categoria;
 use Livewire\Component;
+use App\Models\Trabalho;
 
-class Categorias extends Component
+class Trabalhos extends Component
 {
-    public $categorias, $nome, $descricao, $categoria_id;
+    public $trabalhos, $nome, $trabalho_id;
     public $isOpen = 0;
 
     /**
@@ -17,8 +17,8 @@ class Categorias extends Component
      */
     public function render()
     {
-        $this->categorias = Categoria::all();
-        return view('livewire.categorias');
+        $this->trabalhos = Trabalho::all();
+        return view('livewire.trabalhos');
     }
 
     /**
@@ -60,8 +60,7 @@ class Categorias extends Component
     private function resetInputFields()
     {
         $this->nome = '';
-        $this->descricao = '';
-        $this->categoria_id = '';
+        $this->trabalho_id = '';
     }
 
     /**
@@ -72,18 +71,16 @@ class Categorias extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required|string|min:3|max:250',
-            'descricao' => 'required|string|min:3|max:6000',
+            'nome' => 'required'
         ]);
 
-        Categoria::updateOrCreate(['id' => $this->categoria_id], [
-            'nome' => $this->nome,
-            'descricao' => $this->descricao
+        Trabalho::updateOrCreate(['id' => $this->trabalho_id], [
+            'nome' => $this->nome
         ]);
 
         session()->flash(
             'message',
-            $this->categoria_id ? 'Categoria atualizada com sucesso.' : 'Categoria criada com sucesso.'
+            $this->trabalho_id ? 'Trabalho atualizado com sucesso.' : 'Trabalho criado com sucesso.'
         );
 
         $this->closeModal();
@@ -97,10 +94,9 @@ class Categorias extends Component
      */
     public function edit($id)
     {
-        $categoria = Categoria::findOrFail($id);
-        $this->categoria_id = $id;
-        $this->nome = $categoria->nome;
-        $this->descricao = $categoria->descricao;
+        $trabalho = Trabalho::findOrFail($id);
+        $this->trabalho_id = $id;
+        $this->nome = $trabalho->nome;
 
         $this->openModal();
     }
@@ -112,7 +108,7 @@ class Categorias extends Component
      */
     public function delete($id)
     {
-        Categoria::find($id)->delete();
-        session()->flash('message', 'Categoria deletado com sucesso.');
+        Trabalho::find($id)->delete();
+        session()->flash('message', 'Trabalho deletado com sucesso.');
     }
 }

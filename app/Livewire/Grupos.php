@@ -72,8 +72,8 @@ class Grupos extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required',
-            'descricao' => 'required',
+            'nome' => 'required|string|min:3|max:250',
+            'descricao' => 'required|string|min:3|max:6000',
         ]);
 
         Grupo::updateOrCreate(['id' => $this->grupo_id], [

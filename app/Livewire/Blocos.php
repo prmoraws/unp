@@ -71,7 +71,7 @@ class Blocos extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required',
+            'nome' => 'required|string|min:3|max:250',
         ]);
 
         Bloco::updateOrCreate(['id' => $this->bloco_id], [

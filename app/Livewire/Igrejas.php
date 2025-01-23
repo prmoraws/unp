@@ -78,7 +78,7 @@ class Igrejas extends Component
     public function store()
     {
         $this->validate([
-            'nome' => 'required',
+            'nome' => 'required|string|min:3|max:250',
         ]);
 
         Igreja::updateOrCreate(['id' => $this->igreja_id], [

@@ -70,6 +70,11 @@ git pull origin main
 git push -u origin main
 
 ```
+Ativar Storage Link
+
+```sh
+php artisan storage:link
+```
 
 Acesse o projeto
 [http://localhost:8000](http://localhost:8000)
