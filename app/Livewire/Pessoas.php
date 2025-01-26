@@ -123,6 +123,9 @@ class Pessoas extends Component
             'categoria_id' => $this->categoria_id,
             'cargo_id' => $this->cargo_id,
             'grupo_id' => $this->grupo_id,
+            'cidade_id' => $this->cidade_id,
+            'estado_id' => $this->estado_id,
+            'trabalho_id' => $this->trabalho_id,
             'nome' => $this->nome,
             'celular' => $this->celular,
             'telefone' => $this->telefone,
@@ -130,13 +133,10 @@ class Pessoas extends Component
             'endereco' => $this->endereco,
             'bairro' => $this->bairro,
             'cep' => $this->cep,
-            'cidade_id' => $this->cidade_id,
-            'estado_id' => $this->estado_id,
             'profissao' => $this->profissao,
             'aptidoes' => $this->aptidoes,
             'conversao' => $this->conversao,
             'obra' => $this->obra,
-            'trabalho_id' => $this->trabalho_id,
             'batismo' => $this->batismo,
             'esanto' => $this->esanto,
             'preso' => $this->preso,
@@ -162,13 +162,16 @@ class Pessoas extends Component
     public function edit($id)
     {
         $pessoa = Pessoa::findOrFail($id);
+        $this->pessoa_id = $id;
         $this->bloco_id = $pessoa->bloco_id;
-        $this->regiao_id = $pessoa->regio_id;
+        $this->regiao_id = $pessoa->regiao_id;
         $this->igreja_id = $pessoa->igreja_id;
         $this->categoria_id = $pessoa->categoria_id;
         $this->cargo_id = $pessoa->cargo_id;
         $this->grupo_id = $pessoa->grupo_id;
-        $this->pessoa_id = $id;
+        $this->cidade_id = $pessoa->cidade;
+        $this->estado_id = $pessoa->estado;
+        $this->trabalho_id = $pessoa->trabalho_id;
         $this->nome = $pessoa->nome;
         $this->celular = $pessoa->celular;
         $this->telefone = $pessoa->telefone;
@@ -176,13 +179,10 @@ class Pessoas extends Component
         $this->endereco = $pessoa->endereco;
         $this->bairro = $pessoa->bairro;
         $this->cep = $pessoa->cep;
-        $this->cidade_id = $pessoa->cidade;
-        $this->estado_id = $pessoa->estado;
         $this->profissao = $pessoa->profissao;
         $this->aptidoes = $pessoa->aptidoes;
         $this->conversao = $pessoa->conversao;
         $this->obra = $pessoa->obra;
-        $this->trabalho_id = $pessoa->trabalho_id;
         $this->batismo = $pessoa->batismo;
         $this->esanto = $pessoa->esanto;
         $this->preso = $pessoa->preso;

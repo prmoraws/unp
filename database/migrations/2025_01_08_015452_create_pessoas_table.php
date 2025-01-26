@@ -24,7 +24,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Trabalho::class);
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('nome');
-            $table->string('celeuar');
+            $table->string('celular');
             $table->string('telefone');
             $table->string('email')->unique();
             $table->string('endereco');

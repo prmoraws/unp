@@ -13,7 +13,7 @@ class CategoriaSeeder extends Seeder
      */
     public function run(): void
     {
-        $blocos = [
+        $categorias = [
             [
                 "nome" => "Pastor",
                 "descricao" => "Pastor que é responsável ou auxiliar no trabalho da UNP."
@@ -39,6 +39,6 @@ class CategoriaSeeder extends Seeder
                 "descricao" => "Pessoa que não pertence a Igreja."
             ],
         ];
-        DB::table('blocos')->insert($blocos);
+        DB::table('categorias')->insert($categorias);
     }
 }

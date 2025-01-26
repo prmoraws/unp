@@ -11,6 +11,7 @@ Route::get('igrejas', Igrejas::class)->middleware('auth');
 Route::get('regioes', Regioes::class)->middleware('auth');
 Route::get('blocos', Blocos::class)->middleware('auth');
 Route::get('trabalhos', Trabalhos::class)->middleware('auth');
+Route::get('tipos', Trabalhos::class)->middleware('auth');
 Route::get('pessoas', Pessoas::class)->name('pessoas')->middleware('auth');
 
 

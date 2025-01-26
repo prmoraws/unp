@@ -11,12 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('igrejas', function (Blueprint $table) {
+        Schema::create('tipos', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->foreignIdFor(\App\Models\Bloco::class);
-            $table->foreignIdFor(\App\Models\Regiao::class);
-            $table->foreignIdFor(\App\Models\Tipo::class);
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('igrejas');
+        Schema::dropIfExists('tipos');
     }
 };
