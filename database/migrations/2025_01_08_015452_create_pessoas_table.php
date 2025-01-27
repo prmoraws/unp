@@ -33,10 +33,9 @@ return new class extends Migration
             $table->text('aptidoes');
             $table->date('conversao');     //data de conversão
             $table->date('obra');    //data início na obra
-            $table->boolean('batismo')->default(0);;   //bol batizado nas águas
-            $table->boolean('esanto')->default(0);;  //bol batizado no Espirito Santo
-            $table->boolean('preso')->default(0);;   //bol ja foi preso
-            $table->boolean('parente')->default(0);;     //bol parente preso
+            $table->json('trabalho');
+            $table->json('batismo'); //
+            $table->json('preso');
             $table->text('testemunho');
 
             $table->timestamps();

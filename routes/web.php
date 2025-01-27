@@ -1,6 +1,6 @@
 <?php
 
-use App\Livewire\{Cargos, Grupos, Categorias, Igrejas, Regioes, Blocos, Pessoas, Trabalhos};
+use App\Livewire\{Cargos, Grupos, Categorias, Igrejas, Regioes, Blocos, Pessoas, Tipos, Trabalhos};
 use Illuminate\Support\Facades\Route;
 
 
@@ -10,8 +10,7 @@ Route::get('categorias', Categorias::class)->middleware('auth');
 Route::get('igrejas', Igrejas::class)->middleware('auth');
 Route::get('regioes', Regioes::class)->middleware('auth');
 Route::get('blocos', Blocos::class)->middleware('auth');
-Route::get('trabalhos', Trabalhos::class)->middleware('auth');
-Route::get('tipos', Trabalhos::class)->middleware('auth');
+Route::get('tipos', Tipos::class)->middleware('auth');
 Route::get('pessoas', Pessoas::class)->name('pessoas')->middleware('auth');
 
 

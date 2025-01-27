@@ -7,10 +7,13 @@ use Livewire\Component;
 
 class Pessoas extends Component
 {
-    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
+    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $esanto, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
     public $isOpen = 0;
     public $regiaos = null;
     public $igrejas = null;
+    public $trabalho = [];
+    public $batismo = [];
+    public $preso = [];
 
     public function FiterRegiaoByBlocoId() //Filtro para o select região
     {
@@ -87,10 +90,6 @@ class Pessoas extends Component
         $this->aptidoes = '';
         $this->conversao = '';
         $this->obra = '';
-        $this->batismo = 0;
-        $this->esanto = 0;
-        $this->preso = 0;
-        $this->parente = 0;
         $this->testemunho = '';
         $this->pessoa_id = '';
     }
@@ -102,6 +101,7 @@ class Pessoas extends Component
      */
     public function store()
     {
+        dd($this->igreja_id);
         $this->validate([
             'nome' => 'required|string|min:3|max:250',
             'celular' => 'required',
@@ -109,10 +109,6 @@ class Pessoas extends Component
             'endereco' => 'required',
             'bairro' => 'required',
             'profissao' => 'required',
-            'batismo' => 'required',
-            'esanto' => 'required',
-            'preso' => 'required',
-            'parente' => 'required',
         ]);
 
         Pessoa::updateOrCreate(['id' => $this->pessoa_id], [
@@ -135,10 +131,9 @@ class Pessoas extends Component
             'aptidoes' => $this->aptidoes,
             'conversao' => $this->conversao,
             'obra' => $this->obra,
-            'batismo' => $this->batismo,
-            'esanto' => $this->esanto,
-            'preso' => $this->preso,
-            'parente' => $this->parente,
+            'trabalho' => json_encode($this->trabalho),
+            'batismo' => json_encode($this->batismo),
+            'preso' => json_encode($this->preso),
             'testemunho' => $this->testemunho,
 
         ]);
@@ -180,10 +175,9 @@ class Pessoas extends Component
         $this->aptidoes = $pessoa->aptidoes;
         $this->conversao = $pessoa->conversao;
         $this->obra = $pessoa->obra;
+        $this->trabalho = $pessoa->trabalho;
         $this->batismo = $pessoa->batismo;
-        $this->esanto = $pessoa->esanto;
         $this->preso = $pessoa->preso;
-        $this->parente = $pessoa->parente;
         $this->testemunho = $pessoa->testemunho;
 
         $this->openModal();

@@ -28,10 +28,9 @@ class Pessoa extends Model
         'aptidoes',
         'conversao',
         'obra',
+        'trabalho',
         'batismo',
-        'esanto',
         'preso',
-        'parente',
         'testemunho'
 
     ];
