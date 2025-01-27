@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class Pessoas extends Component
 {
-    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $trabalho_id, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
+    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $batismo, $esanto, $preso, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
     public $isOpen = 0;
     public $regiaos = null;
     public $igrejas = null;
@@ -87,7 +87,6 @@ class Pessoas extends Component
         $this->aptidoes = '';
         $this->conversao = '';
         $this->obra = '';
-        $this->trabalho_id = '';
         $this->batismo = 0;
         $this->esanto = 0;
         $this->preso = 0;
@@ -125,7 +124,6 @@ class Pessoas extends Component
             'grupo_id' => $this->grupo_id,
             'cidade_id' => $this->cidade_id,
             'estado_id' => $this->estado_id,
-            'trabalho_id' => $this->trabalho_id,
             'nome' => $this->nome,
             'celular' => $this->celular,
             'telefone' => $this->telefone,
@@ -171,7 +169,6 @@ class Pessoas extends Component
         $this->grupo_id = $pessoa->grupo_id;
         $this->cidade_id = $pessoa->cidade;
         $this->estado_id = $pessoa->estado;
-        $this->trabalho_id = $pessoa->trabalho_id;
         $this->nome = $pessoa->nome;
         $this->celular = $pessoa->celular;
         $this->telefone = $pessoa->telefone;

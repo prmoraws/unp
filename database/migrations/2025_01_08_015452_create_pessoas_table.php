@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\Grupo::class);
             $table->foreignIdFor(\App\Models\Cidade::class);
             $table->foreignIdFor(\App\Models\Estado::class);
-            $table->foreignIdFor(\App\Models\Trabalho::class);
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('nome');
             $table->string('celular');

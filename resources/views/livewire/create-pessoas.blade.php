@@ -205,18 +205,7 @@
                                 <x-input-error for="obra" class="mt-2" />
                             </div>
                         </div>
-                        <div class="mb-4">
-                            <div class="relative">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Trabalho</label>
-                                <select wire:model="trabalho_id"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                    <option value="">--selecione--</option>
-                                    @foreach (\App\Models\Trabalho::all() as $trabalho)
-                                        <option value="{{ $trabalho->id }}">{{ $trabalho->nome }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                         
                         <div class="mb-4">
                             <label for="exampleFormControlInput1"
                                 class="block text-gray-700 text-sm font-bold mb-2">Sobre o batismo nas águas:</label>

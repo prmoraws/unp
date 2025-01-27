@@ -51,7 +51,6 @@
                         <th class="px-4 py-2">Aptidões</th>
                         <th class="px-4 py-2">Conversão</th>
                         <th class="px-4 py-2">Obra</th>
-                        <th class="px-4 py-2">Trabalho</th>
                         <th class="px-4 py-2">Batismo</th>
                         <th class="px-4 py-2">E.Santo</th>
                         <th class="px-4 py-2">Ex-Preso</th>
@@ -83,7 +82,6 @@
                             <td class="border px-4 py-2">{{ $pessoa->aptidoes }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->conversao }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->obra }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->trabalho }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->batismo }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->esanto }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->preso }}</td>
