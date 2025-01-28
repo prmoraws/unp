@@ -2,12 +2,21 @@
 
 namespace App\Livewire;
 
-use App\Models\{Cidade, Pessoa, Regiao, Igreja};
+use App\Models\Cidade;
+use App\Models\Igreja;
+use App\Models\Pessoa;
+use App\Models\Regiao;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
+use Laravel\Jetstream\Features;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Pessoas extends Component
 {
-    public $pessoas, $pessoa, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $esanto, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
+    use WithFileUploads;
+
+    public $pessoas, $pessoa, $foto, $nome, $celular, $telefone, $email, $endereco, $bairro, $cep, $cidade_id, $estado_id, $profissao, $aptidoes, $conversao, $obra, $esanto, $parente, $testemunho, $pessoa_id, $bloco_id, $regiao_id, $igreja_id, $categoria_id, $cargo_id, $grupo_id;
     public $isOpen = 0;
     public $regiaos = null;
     public $igrejas = null;
@@ -116,8 +125,11 @@ class Pessoas extends Component
             'endereco' => 'required',
             'bairro' => 'required',
             'profissao' => 'required',
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
+        $foto_nome = md5($this->foto . microtime()) . '.' . $this->foto->extension();
+        $this->foto->storeAs('public', $foto_nome);
         Pessoa::updateOrCreate(['id' => $this->pessoa_id], [
             'bloco_id' => $this->bloco_id,
             'regiao_id' => $this->regiao_id,
@@ -127,6 +139,7 @@ class Pessoas extends Component
             'grupo_id' => $this->grupo_id,
             'cidade_id' => $this->cidade_id,
             'estado_id' => $this->estado_id,
+            'foto' => $foto_nome,
             'nome' => $this->nome,
             'celular' => $this->celular,
             'telefone' => $this->telefone,
@@ -138,7 +151,7 @@ class Pessoas extends Component
             'aptidoes' => $this->aptidoes,
             'conversao' => $this->conversao,
             'obra' => $this->obra,
-            'trabalho' => json_encode($this->trabalho),
+            'trabalho' => json_encode($this->trabalho), //checkbox agrupado precisa de encode para bd
             'batismo' => json_encode($this->batismo),
             'preso' => json_encode($this->preso),
             'testemunho' => $this->testemunho,
@@ -182,10 +195,9 @@ class Pessoas extends Component
         $this->aptidoes = $pessoa->aptidoes;
         $this->conversao = $pessoa->conversao;
         $this->obra = $pessoa->obra;
-        $this->trabalho = explode(',', $pessoa->trabalho);
-        //dd( $this->trabalho);
-        $this->batismo = $pessoa->batismo;
-        $this->preso = $pessoa->preso;
+        $this->trabalho = json_decode($pessoa->trabalho);  //checkbox agrupado precisa de encode para bd
+        $this->batismo = json_decode($pessoa->batismo);
+        $this->preso = json_decode($pessoa->preso);
         $this->testemunho = $pessoa->testemunho;
 
         $this->openModal();

@@ -20,7 +20,7 @@
                                 <select wire:change="FiterRegiaoByBlocoId" wire:model="bloco_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="">--selecione--</option>
-                                    @foreach (\App\Models\Bloco::all() as $bloco)
+                                    @foreach (\App\Models\Bloco::orderBy('nome')->get() as $bloco)
                                         <option value="{{ $bloco->id }}">{{ $bloco->nome }}</option>
                                     @endforeach
                                 </select>
@@ -95,7 +95,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="nome" value="{{ __('Nome') }}" />
                                 <x-input id="nome" type="text" class="mt-1 block w-full" wire:model="nome"
-                                    required autocomplete="nome" />
+                                    required autocomplete="nome" placeholder="ex: João Batista" placeholder-gray-500
+                                    placeholder:italic />
                                 <x-input-error for="nome" class="mt-2" />
                             </div>
                         </div>
@@ -104,7 +105,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="celular" value="{{ __('Celular') }}" />
                                 <x-input id="celular" type="text" class="mt-1 block w-full" wire:model="celular"
-                                    required autocomplete="celular" />
+                                    required autocomplete="celular" placeholder="ex: (71)9 9999-0000"
+                                    placeholder-gray-500 />
                                 <x-input-error for="celular" class="mt-2" />
                             </div>
                         </div>
@@ -112,7 +114,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="email" value="{{ __('Email') }}" />
                                 <x-input id="email" type="email" class="mt-1 block w-full" wire:model="email"
-                                    required autocomplete="email" />
+                                    required autocomplete="email" placeholder="ex: exemplo@exemplo.com"
+                                    placeholder-gray-500 placeholder:italic />
                                 <x-input-error for="email" class="mt-2" />
                             </div>
                         </div>
@@ -121,7 +124,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="endereco" value="{{ __('Endereço') }}" />
                                 <x-input id="endereco" type="text" class="mt-1 block w-full" wire:model="endereco"
-                                    required autocomplete="endereco" />
+                                    required autocomplete="endereco" placeholder="ex: Av. ACM, 4197"
+                                    placeholder-gray-500 />
                                 <x-input-error for="endereco" class="mt-2" />
                             </div>
                         </div>
@@ -130,7 +134,7 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="bairro" value="{{ __('Bairro') }}" />
                                 <x-input id="bairro" type="text" class="mt-1 block w-full" wire:model="bairro"
-                                    required autocomplete="bairro" />
+                                    required autocomplete="bairro" placeholder="ex: Pituba" placeholder-gray-500 />
                                 <x-input-error for="bairro" class="mt-2" />
                             </div>
                         </div>
@@ -139,7 +143,7 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="cep" value="{{ __('Cep') }}" />
                                 <x-input id="cep" type="text" class="mt-1 block w-full" wire:model="cep"
-                                    required autocomplete="cep" />
+                                    required autocomplete="cep" placeholder="ex: 40.000-000" placeholder-gray-500 />
                                 <x-input-error for="cep" class="mt-2" />
                             </div>
                         </div>
@@ -150,7 +154,7 @@
                                 <select wire:change="FiterRegiaoByEstadoId" wire:model="estado_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="">--selecione--</option>
-                                    @foreach (\App\Models\Estado::all() as $estado)
+                                    @foreach (\App\Models\Estado::orderBy('nome')->get() as $estado)
                                         <option value="{{ $estado->id }}">{{ $estado->nome }}</option>
                                     @endforeach
                                 </select>
@@ -175,7 +179,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="profissao" value="{{ __('Profissão') }}" />
                                 <x-input id="profissao" type="text" class="mt-1 block w-full"
-                                    wire:model="profissao" required autocomplete="profissao" />
+                                    wire:model="profissao" required autocomplete="profissao"
+                                    placeholder="ex: Advogado" placeholder-gray-500 />
                                 <x-input-error for="profissao" class="mt-2" />
                             </div>
                         </div>
@@ -184,7 +189,8 @@
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="aptidoes" value="{{ __('Aptidões') }}" />
                                 <x-input id="aptidoes" type="text" class="mt-1 block w-full"
-                                    wire:model="aptidoes" required autocomplete="aptidoes" />
+                                    wire:model="aptidoes" required autocomplete="aptidoes"
+                                    placeholder="ex: elétrica, marcenaria, costura, etc." placeholder-gray-500 />
                                 <x-input-error for="aptidoes" class="mt-2" />
                             </div>
                         </div>
@@ -210,11 +216,7 @@
                             <!-- Checkbox trabalho -->
                             <div class="col-span-6 sm:col-span-4 p-4">
                                 <div class="flex items-center">
-                                    {{ in_array("externo", $trabalho) ? 'checked' : $trabalho[1] }}  
-
-                                    <x-input wire:model="trabalho" value="interno" type="checkbox" 
-                                                                      
-                                    />
+                                    <x-input wire:model="trabalho" value="interno" type="checkbox" />
                                     <x-label class="px-2" value="{{ __('Trabalho Interno (Credenciado)') }}" />
                                 </div>
                                 <br>
@@ -260,11 +262,25 @@
                                 class="block text-gray-700 text-sm font-bold mb-2">Testemunho:</label>
                             <textarea
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="exampleFormControlInput1" placeholder="Entre com testemunho" wire:model="testemunho"></textarea>
+                                id="exampleFormControlInput1" placeholder="ex: Era viciado, etc..." placeholder-gray-500 wire:model="testemunho"></textarea>
                             @error('testemunho')
                                 <span class="text-red-500">{{ $message }}</span>
                             @enderror
                         </div>
+                        <div class="mb-4">
+                            <input type="file" wire:model="foto" class="">
+                            <div>
+                                @error('foto')
+                                    <span class="text-sm text-red-500 italic">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div wire:loading wire:target="foto" class="text-sm text-gray-500 italic">Carregando...
+                            </div>
+                            @error('foto')
+                                <span class="text-red-500">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                     </div>
                 </div>
 

@@ -32,15 +32,16 @@
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-gray-100">
-                        <th class="px-4 py-2 w-20">ID.</th>
+                        {{-- <th class="px-4 py-2 w-20">ID.</th>
                         <th class="px-4 py-2 w-20">Bloco</th>
-                        <th class="px-4 py-2 w-20">Região</th>
-                        <th class="px-4 py-2 w-20">Igreja</th>
-                        <th class="px-4 py-2 w-20">Categoria</th>
-                        <th class="px-4 py-2 w-20">Cargo</th>
-                        <th class="px-4 py-2 w-20">Grupo</th>
+                        <th class="px-4 py-2 w-20">Região</th> --}}
+                        {{-- <th class="px-4 py-2 w-20">Igreja</th> --}}
+                        {{-- <th class="px-4 py-2 w-20">Categoria</th> --}}
+                        {{-- <th class="px-4 py-2 w-20">Cargo</th> --}}
+                        {{-- <th class="px-4 py-2 w-20">Grupo</th> --}}
+                        <th class="px-4 py-2 w-20">Foto</th>
                         <th class="px-4 py-2">Nome</th>
-                        <th class="px-4 py-2">Celular</th>
+                        {{-- <th class="px-4 py-2">Celular</th>
                         <th class="px-4 py-2">Email</th>
                         <th class="px-4 py-2">Endereço</th>
                         <th class="px-4 py-2">Bairro</th>
@@ -55,22 +56,24 @@
                         <th class="px-4 py-2">E.Santo</th>
                         <th class="px-4 py-2">Ex-Preso</th>
                         <th class="px-4 py-2">Familiar Preso</th>
-                        <th class="px-4 py-2">Testemunho</th>
+                        <th class="px-4 py-2">Testemunho</th> --}}
                         <th class="px-4 py-2">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($pessoas as $pessoa)
                         <tr>
-                            <td class="border px-4 py-2">{{ $pessoa->id }}</td>
+                            {{-- <td class="border px-4 py-2">{{ $pessoa->id }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->bloco_id }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->regiao_id }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->igreja_id }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->categoria_id }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->cargo_id }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->grupo_id }}</td>
+                            <td class="border px-4 py-2">{{ $pessoa->regiao_id }}</td> --}}
+                            {{-- <td class="border px-4 py-2">{{ $pessoa->igreja_id }}</td> --}}
+                            {{-- <td class="border px-4 py-2">{{ $pessoa->categoria_id }}</td> --}}
+                            {{-- <td class="border px-4 py-2">{{ $pessoa->cargo_id }}</td> --}}
+                            {{-- <td class="border px-4 py-2">{{ $pessoa->grupo_id }}</td> --}}
+                            <td class="border px-4 py-2"> <img src="{{ url('storage/' . $pessoa->foto) }}">
+                            </td>
                             <td class="border px-4 py-2">{{ $pessoa->nome }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->celular }}</td>
+                            {{-- <td class="border px-4 py-2">{{ $pessoa->celular }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->telefone }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->email }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->endereco }}</td>
@@ -86,7 +89,7 @@
                             <td class="border px-4 py-2">{{ $pessoa->esanto }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->preso }}</td>
                             <td class="border px-4 py-2">{{ $pessoa->parente }}</td>
-                            <td class="border px-4 py-2">{{ $pessoa->testemunho }}</td>
+                            <td class="border px-4 py-2">{{ $pessoa->testemunho }}</td> --}}
                             <td class="border px-4 py-2">
                                 <button wire:click="edit({{ $pessoa->id }})"
                                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Editar</button>

@@ -15,6 +15,7 @@ class Pessoa extends Model
         'grupo_id',
         'cidade_id',
         'estado_id',
+        'foto',
         'nome',
         'celular',
         'telefone',
