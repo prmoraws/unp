@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\{Pessoa, Regiao, Igreja};
+use App\Models\{Cidade, Pessoa, Regiao, Igreja};
 use Livewire\Component;
 
 class Pessoas extends Component
@@ -11,6 +11,7 @@ class Pessoas extends Component
     public $isOpen = 0;
     public $regiaos = null;
     public $igrejas = null;
+    public $cidades = null;
     public $trabalho = [];
     public $batismo = [];
     public $preso = [];
@@ -21,9 +22,15 @@ class Pessoas extends Component
             ->get();
     }
 
-    public function FiterIgrejaByBlocoId() //Filtro para o select região
+    public function FiterIgrejaByBlocoId() //Filtro para o select igreja
     {
         $this->igrejas = Igreja::where('regiao_id', $this->regiao_id)
+            ->get();
+    }
+
+    public function FiterRegiaoByEstadoId() //Filtro para o select Cidade
+    {
+        $this->cidades = Cidade::where('estado_id', $this->estado_id)
             ->get();
     }
 
@@ -101,7 +108,7 @@ class Pessoas extends Component
      */
     public function store()
     {
-        dd($this->igreja_id);
+        //dd($this->cidade_id);
         $this->validate([
             'nome' => 'required|string|min:3|max:250',
             'celular' => 'required',
@@ -162,8 +169,8 @@ class Pessoas extends Component
         $this->categoria_id = $pessoa->categoria_id;
         $this->cargo_id = $pessoa->cargo_id;
         $this->grupo_id = $pessoa->grupo_id;
-        $this->cidade_id = $pessoa->cidade;
-        $this->estado_id = $pessoa->estado;
+        $this->cidade_id = $pessoa->cidade_id;
+        $this->estado_id = $pessoa->estado_id;
         $this->nome = $pessoa->nome;
         $this->celular = $pessoa->celular;
         $this->telefone = $pessoa->telefone;
@@ -175,7 +182,8 @@ class Pessoas extends Component
         $this->aptidoes = $pessoa->aptidoes;
         $this->conversao = $pessoa->conversao;
         $this->obra = $pessoa->obra;
-        $this->trabalho = $pessoa->trabalho;
+        $this->trabalho = explode(',', $pessoa->trabalho);
+        //dd( $this->trabalho);
         $this->batismo = $pessoa->batismo;
         $this->preso = $pessoa->preso;
         $this->testemunho = $pessoa->testemunho;

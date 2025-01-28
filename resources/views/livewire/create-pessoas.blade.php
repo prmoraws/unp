@@ -145,30 +145,31 @@
                         </div>
                         <!-- Estado -->
                         <div class="mb-4">
-                            <div class="col-span-6 sm:col-span-4">
-                                <x-label for="cep" value="{{ __('Estado') }}" />
-                                <select wire:model="estado"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                    @foreach (\App\Models\Estado::all() as $estado)
-                                        @if ($estado->id == 29)
-                                            <option value="{{ $estado->id }}">{{ $estado->nome }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="mb-4">
                             <div class="relative">
-                                <x-label for="cep" value="{{ __('Cidade') }}" />
-                                <select wire:model="cidade"
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Estado</label>
+                                <select wire:change="FiterRegiaoByEstadoId" wire:model="estado_id"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                    <option value="{{ 2163 }}">{{ 'Salvador' }}</option>
-                                    @foreach (\App\Models\Cidade::where('estado_id', 29)->get() as $cidade)
-                                        <option value="{{ $cidade->id }}">{{ $cidade->nome }}</option>
+                                    <option value="">--selecione--</option>
+                                    @foreach (\App\Models\Estado::all() as $estado)
+                                        <option value="{{ $estado->id }}">{{ $estado->nome }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
+                        @if ($cidades)
+                            <div class="mb-4">
+                                <div class="relative">
+                                    <label class="block text-gray-700 text-sm font-bold mb-2">Cidade</label>
+                                    <select wire:model="cidade_id"
+                                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                        <option value="">--selecione--</option>
+                                        @foreach ($cidades as $cidade)
+                                            <option value="{{ $cidade->id }}">{{ $cidade->nome }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endif
                         <div class="mb-4">
                             <!-- Profissão -->
                             <div class="col-span-6 sm:col-span-4">
@@ -209,7 +210,11 @@
                             <!-- Checkbox trabalho -->
                             <div class="col-span-6 sm:col-span-4 p-4">
                                 <div class="flex items-center">
-                                    <x-input wire:model="trabalho" value="interno" type="checkbox" />
+                                    {{ in_array("externo", $trabalho) ? 'checked' : $trabalho[1] }}  
+
+                                    <x-input wire:model="trabalho" value="interno" type="checkbox" 
+                                                                      
+                                    />
                                     <x-label class="px-2" value="{{ __('Trabalho Interno (Credenciado)') }}" />
                                 </div>
                                 <br>
