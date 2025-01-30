@@ -6,6 +6,7 @@ use App\Models\Cidade;
 use App\Models\Igreja;
 use App\Models\Pessoa;
 use App\Models\Regiao;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Laravel\Jetstream\Features;
@@ -149,8 +150,8 @@ class Pessoas extends Component
             'cep' => $this->cep,
             'profissao' => $this->profissao,
             'aptidoes' => $this->aptidoes,
-            'conversao' => $this->conversao,
-            'obra' => $this->obra,
+            'conversao' =>  empty($this->conversao) ? null : Carbon::parse($this->conversao),
+            'obra' => empty($this->obra) ? null : Carbon::parse($this->obra),
             'trabalho' => json_encode($this->trabalho), //checkbox agrupado precisa de encode para bd
             'batismo' => json_encode($this->batismo),
             'preso' => json_encode($this->preso),

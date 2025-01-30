@@ -626,6 +626,10 @@ class RegiaoSeeder extends Seeder
                 "nome" => "Vila de Abrante",
                 "bloco_id" => 20,
             ],
+            [
+                "nome" => "Catedral",
+                "bloco_id" => 21,
+            ],
 
         ];
         DB::table('regiaos')->insert($regiaos);

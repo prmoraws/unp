@@ -74,6 +74,9 @@ class BlocoSeeder extends Seeder
             [
                 "nome" => "Vilas do Atlântico"
             ],
+            [
+                "nome" => "Catedral"
+            ],
 
 
         ];

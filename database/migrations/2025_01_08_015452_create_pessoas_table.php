@@ -31,8 +31,8 @@ return new class extends Migration
             $table->string('cep');
             $table->string('profissao');
             $table->text('aptidoes');
-            $table->date('conversao');     //data de conversão
-            $table->date('obra');    //data início na obra
+            $table->date('conversao')->nullable();     //data de conversão
+            $table->date('obra')->nullable();    //data início na obra
             $table->json('trabalho');
             $table->json('batismo'); //
             $table->json('preso');

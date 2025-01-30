@@ -3885,6 +3885,12 @@ class IgrejaSeeder extends Seeder
                 "regiao_id" => 153,
                 "tipo_id" => 1,
             ],
+            [
+                "nome" => "Catedral",
+                "bloco_id" => 21,
+                "regiao_id" => 154,
+                "tipo_id" => 1,
+            ],
 
         ];
         DB::table('igrejas')->insert($igrejas);

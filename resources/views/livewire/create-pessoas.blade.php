@@ -94,7 +94,7 @@
                         <div class="mb-4">
                             <div class="col-span-6 sm:col-span-4">
                                 <x-label for="nome" value="{{ __('Nome') }}" />
-                                <x-input id="nome" type="text" class="mt-1 block w-full" wire:model="nome"
+                                <x-input id="nome" type="text" class="capitalize mt-1 block w-full" wire:model="nome"
                                     required autocomplete="nome" placeholder="ex: João Batista" placeholder-gray-500
                                     placeholder:italic />
                                 <x-input-error for="nome" class="mt-2" />
